@@ -79,6 +79,14 @@ Action[][] taskActions =
         PracticalWork4.Task4,
         PracticalWork4.Task5
     },
+    new Action[]
+    {
+        PracticalWork5.Task1,
+        PracticalWork5.Task2,
+        PracticalWork5.Task3,
+        PracticalWork5.Task4,
+        PracticalWork5.Task5
+    },
 };
 
 
@@ -96,7 +104,14 @@ while (true)
     Console.WriteLine(Environment.NewLine + "Selected task:");
     Console.WriteLine(tasks[taskNumber][practicalWorkNumber] + Environment.NewLine);
 
-    taskActions[taskNumber][practicalWorkNumber]();
+    try
+    {
+        taskActions[taskNumber][practicalWorkNumber]();
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("This task does not exist");
+    }
 
     Reset();
     Console.WriteLine(Environment.NewLine);

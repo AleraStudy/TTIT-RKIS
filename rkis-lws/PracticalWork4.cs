@@ -24,32 +24,31 @@ public static class PracticalWork4
 
     public static void Task2()
     {
-        Console.WriteLine("Incorrect task");
-        // Console.Write("Enter the start of the range: ");
-        // var startRange = Helpers.GetIntFromCommandLine();
-        //
-        // Console.Write("Enter the end of the range: ");
-        // var endRange = Helpers.GetIntFromCommandLine();
-        //
-        // var randomArray = GenerateRandomArray(startRange, endRange);
-        // Console.WriteLine($"Random Array: [{string.Join(", ", randomArray)}]");
-        // return;
-        //
-        // IEnumerable<int> GenerateRandomArray(int start, int end)
-        // {
-        //     var random = new Random();
-        //     var array = new int[end - start + 1];
-        //
-        //     array[0] = start;
-        //     array[^1] = end;
-        //
-        //     for (var i = 1; i < array.Length-1; i++)
-        //     {
-        //         array[i] = random.Next(-100,100);
-        //     }
-        //
-        //     return array;
-        // }
+        Console.Write("Enter the array size: ");
+        var arraySize = Helpers.GetIntFromCommandLine();
+        
+        Console.Write("Enter the start of the range: ");
+        var startRange = Helpers.GetIntFromCommandLine();
+        
+        Console.Write("Enter the end of the range: ");
+        var endRange = Helpers.GetIntFromCommandLine();
+        
+        var randomArray = GenerateArrayWithRandomNumbers(arraySize, startRange, endRange);
+        Console.WriteLine($"Random Array: [{string.Join(", ", randomArray)}]");
+        return;
+        
+        IEnumerable<int> GenerateArrayWithRandomNumbers(int arraySize, int minNumber, int maxNumber)
+        {
+        var random = new Random();
+        var array = new int[arraySize];
+        
+        for (var i = 0; i < array.Length; i++)
+        {
+            array[i] = random.Next(minNumber,maxNumber);
+        }
+        
+        return array;
+        }
     }
 
     public static void Task3()
@@ -59,7 +58,7 @@ public static class PracticalWork4
 
         var random = new Random();
         var arrayWithNumbers = new int[arraySize];
-        for (int i = 0; i < arrayWithNumbers.Length; i++)
+        for (var i = 0; i < arrayWithNumbers.Length; i++)
         {
             arrayWithNumbers[i] = random.Next(-100, 101);
         }
@@ -169,7 +168,7 @@ public static class PracticalWork4
                 for (var k = 0; k < size3; k++)
                 {
                     array[i, j, k] = random.Next(-100, 101);
-                    Console.Write($"{array[i, j, k]} ({i}, {j}, {k}) ");
+                    Console.Write($"{array[i, j, k]} [{i}, {j}, {k}]; ");
                 }
             }
         }

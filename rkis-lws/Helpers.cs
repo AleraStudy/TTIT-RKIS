@@ -63,4 +63,42 @@ public static class Helpers
 
         return result.Value;
     }
+    
+    private static int[]? GetArrayOrNullFromCommandLine(int minLength = 0, int maxLength = int.MaxValue)
+    {
+        Console.WriteLine("Enter the elements of the array, separated by commas:");
+        var input = Console.ReadLine();
+        var stringElements = input?.Split(',');
+
+        if (stringElements == null || stringElements.Length < minLength || stringElements.Length > maxLength)
+        {
+            Console.WriteLine("Invalid input or incorrect range. Please enter a valid array.");
+            return null;
+        }
+
+        var array = new int[stringElements.Length];
+        for (var i = 0; i < stringElements.Length; i++)
+        {
+            if (!int.TryParse(stringElements[i], out var element))
+            {
+                Console.WriteLine($"Invalid input at element {i + 1}. Please enter a valid array.");
+                return null;
+            }
+            array[i] = element;
+        }
+
+        return array;
+    }
+
+
+    public static int[] GetArrayFromCommandLine(int minLength = 0, int maxLength = int.MaxValue)
+    {
+        int[]? result;
+        do
+        {
+            result = GetArrayOrNullFromCommandLine(minLength, maxLength);
+        } while (result == null);
+
+        return result;
+    }
 }
