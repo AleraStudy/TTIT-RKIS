@@ -90,7 +90,6 @@ public static class Helpers
         return array;
     }
 
-
     public static int[] GetArrayFromCommandLine(int minLength = 0, int maxLength = int.MaxValue)
     {
         int[]? result;
@@ -100,5 +99,18 @@ public static class Helpers
         } while (result == null);
 
         return result;
+    }
+    
+    public static void PrintMatrix(int[,] mat)
+    {
+        for (var i = 0; i < mat.GetLength(0); i++)
+        {
+            for (var j = 0; j < mat.GetLength(1); j++)
+            {
+                Console.Write(mat[i, j] + " ");
+            }
+
+            Console.WriteLine();
+        }
     }
 }
